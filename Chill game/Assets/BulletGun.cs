@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public float speed = 60f;
+    public float speed = 100f;
 
     public GameObject bulletPrefab;
     public Transform firePoint;
@@ -38,6 +38,8 @@ public class Gun : MonoBehaviour
 
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.velocity = direction * speed;
+
+        Destroy(bullet, 2f);
     }
 
 }
