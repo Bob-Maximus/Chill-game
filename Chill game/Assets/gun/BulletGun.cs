@@ -7,15 +7,17 @@ public class Gun : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public Camera cam;
+    public GameObject muzzleFlash;
+    public GameObject gun;
 
     void Update()
     {
-        
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }
 
+        gun.transform.parent.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
     void Shoot()
@@ -32,14 +34,17 @@ public class Gun : MonoBehaviour
         {
             targetPoint = ray.GetPoint(100f);
         }
-        Vector3 direction = (targetPoint - firePoint.position).normalized;
+        Vector3 direction = gun.transform.forward;
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(direction));
+        Instantiate(muzzleFlash, firePoint.position, Quaternion.LookRotation(direction));
 
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.velocity = direction * speed;
 
+        //gun.transform.parent.GetComponent<Rigidbody>().AddExplosionForce(100, firePoint.position, 0, 0, ForceMode.Impulse);
+        gun.transform.parent.GetComponent<Rigidbody>().AddForce(-direction*50, ForceMode.Impulse);
+
         Destroy(bullet, 2f);
     }
-
 }
