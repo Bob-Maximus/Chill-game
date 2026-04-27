@@ -9,6 +9,9 @@ public class Gun : MonoBehaviour
     public Camera cam;
     public GameObject muzzleFlash;
     public GameObject gun;
+    public Transform lookPosition;
+
+    public float recoil;
 
     void Update()
     {
@@ -43,7 +46,9 @@ public class Gun : MonoBehaviour
         rb.velocity = direction * speed;
 
         //gun.transform.parent.GetComponent<Rigidbody>().AddExplosionForce(100, firePoint.position, 0, 0, ForceMode.Impulse);
-        gun.transform.parent.GetComponent<Rigidbody>().AddForce(-direction*50, ForceMode.Impulse);
+        gun.transform.parent.GetComponent<Rigidbody>().AddForce(-direction*recoil, ForceMode.Impulse);
+        float lookRecoil = recoil*1000;
+        lookPosition.position = new Vector3(Random.Range(-lookRecoil, lookRecoil), Random.Range(-lookRecoil, lookRecoil), Random.Range(-lookRecoil, lookRecoil)) ;
 
         Destroy(bullet, 2f);
     }

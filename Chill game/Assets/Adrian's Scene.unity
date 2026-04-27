@@ -861,6 +861,8 @@ MonoBehaviour:
   cam: {fileID: 350441372}
   muzzleFlash: {fileID: 4680819261167661840, guid: f390e1cebcfd82ed69758eb7e991a2e3, type: 3}
   gun: {fileID: 1623514599}
+  lookPosition: {fileID: 1234173793}
+  recoil: 50
 --- !u!1001 &1564915293
 PrefabInstance:
   m_ObjectHideFlags: 0
