@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DayNIght : MonoBehaviour
 {
@@ -11,6 +14,13 @@ public class DayNIght : MonoBehaviour
     public float daySpeed;
 
     public float timeOfDay;
+    public bool day;
+
+    private float angle=90;
+    private bool rotated1;
+    private bool rotated2;
+
+    public RectTransform DayNightIndicator;
 
     public void Awake()
     {
@@ -26,10 +36,33 @@ public class DayNIght : MonoBehaviour
         if (timeOfDay > 24)
         {
             timeOfDay=0;
+            rotated1 = false;
+            rotated2 = false;
         }
 
-        //sun.transform.rotation = Quaternion.Euler(timeOfDay*15, sun.transform.rotation.eulerAngles.y, sun.transform.rotation.eulerAngles.z);
         sun.transform.Rotate(Time.deltaTime*daySpeed*15, 0, 0);
-        //sky.SetFloat("_AtmosphereThickness", timeOfDay);
+
+        
+        if (timeOfDay > 12)
+        {
+            if (rotated1 == false)
+            {
+                angle-=90;
+                rotated1 = true;
+                day=false;
+            }
+        } 
+        else
+        {
+            if (rotated2 == false)
+            {
+                angle-=90;
+                rotated2 = true;
+                day=true;
+            }
+        }
+        DayNightIndicator.rotation = Quaternion.Lerp(DayNightIndicator.rotation, Quaternion.Euler(0, 0, angle), Time.deltaTime*10);
     }
 }
+
+
