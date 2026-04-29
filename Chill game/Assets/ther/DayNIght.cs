@@ -8,6 +8,9 @@ using UnityEngine.UIElements;
 
 public class DayNIght : MonoBehaviour
 {
+    public int round;
+
+
     public float time;
     private Material sky;
     public Transform sun;
@@ -56,6 +59,7 @@ public class DayNIght : MonoBehaviour
         {
             if (rotated2 == false)
             {
+                round++;
                 angle-=90;
                 rotated2 = true;
                 day=true;
