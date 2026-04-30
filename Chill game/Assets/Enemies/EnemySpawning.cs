@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
+using UnityEngine;
+
+public class EnemySpawning : MonoBehaviour
+{
+    public DayNIght time;    
+
+    public float mapWidth, mapHeight;
+
+    public List<EnemyEntry> enemies;
+
+    void Update()
+    {    
+        if (Random.Range(0, 500/(1+(time.round/100)))==1)
+        {
+            int enemyIndex = Random.Range(0, enemies.Count);
+            Instantiate(enemies[enemyIndex].obj, new Vector3(Random.Range(-mapWidth/2, mapWidth/2), Random.Range(-mapHeight/2, mapHeight/2), enemies[enemyIndex].startHeight), transform.rotation);
+        }
+    }
+
+
+[System.Serializable]
+    public class EnemyEntry
+    {
+        public GameObject obj;
+        public float startHeight;
+        public EnemyEntry(GameObject obj, float startHeight, float startingHealth)
+        {
+            this.obj = obj;
+            this.startHeight = startHeight;
+        }
+    }
+}

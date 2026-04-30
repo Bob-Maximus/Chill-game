@@ -52,6 +52,7 @@ MonoBehaviour:
   speed: 20
   attackRange: 1
   damage: 5
+  startingHealth: 50
   peckObject: {fileID: 7991909620005122766}
 --- !u!54 &9016531758546114294
 Rigidbody:

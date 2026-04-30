@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class Bird : MonoBehaviour
@@ -16,6 +13,7 @@ public class Bird : MonoBehaviour
     public float speed;
     public float attackRange;
     public float damage;
+    public float startingHealth;
 
     public GameObject peckObject;
 
@@ -23,6 +21,9 @@ public class Bird : MonoBehaviour
     {
         rb  = GetComponent<Rigidbody>();
         target = GameObject.Find("Player").transform;
+        height = Random.Range(20, 40);
+
+        transform.GetChild(0).GetComponent<HEalth>().health = startingHealth;
     }
 
 
