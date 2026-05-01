@@ -15,7 +15,7 @@ public class EnemySpawning : MonoBehaviour
 
     void Update()
     {    
-        if (Random.Range(0, 500/(1+(time.round/100)))==2)
+        if (Random.Range(0, 3000/(1+(time.round/100)))==2)
         {
             Debug.Log("o");
             if (time.day)
