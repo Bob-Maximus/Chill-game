@@ -364,7 +364,7 @@ MonoBehaviour:
   anim: {fileID: 4619165364459951268}
   target: {fileID: 0}
   height: -7
-  speed: 10
+  speed: 7
   attackRange: 7
   damage: 10
   startingHealth: 50

@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 3094009999521032121}
   target: {fileID: 0}
-  regularHieght: 20
+  regularHieght: 8
   speed: 30
   attackRange: 1
   damage: 20
