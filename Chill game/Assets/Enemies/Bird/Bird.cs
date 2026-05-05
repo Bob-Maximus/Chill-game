@@ -15,12 +15,16 @@ public class Bird : MonoBehaviour
     public float damage;
     public float startingHealth;
 
+    public AudioClip sound;
+    public AudioClip biteSound;
+
     public float score;
 
     public GameObject peckObject;
 
     void Awake()
     {
+        GetComponent<AudioSource>().PlayOneShot(sound);
         rb  = GetComponent<Rigidbody>();
         target = GameObject.Find("Player").transform;
         height = Random.Range(20, 40);
@@ -39,6 +43,11 @@ public class Bird : MonoBehaviour
         } else
         {
             FollowPlayer();
+        }
+
+        if (Random.Range(0, 50000)==69){}
+        {
+            //GetComponent<AudioSource>().PlayOneShot(sound);
         }
     } 
 
@@ -76,6 +85,7 @@ public class Bird : MonoBehaviour
             for(int i = 0; i < peckTargets.Length; i++) {
                 if (peckTargets[i].gameObject.tag == "Player")
                 {
+                    GetComponent<AudioSource>().PlayOneShot(biteSound);
                     peckTargets[i].transform.parent.GetComponent<HEalth>().health -= damage;
                 }
             }

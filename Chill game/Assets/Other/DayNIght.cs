@@ -63,6 +63,7 @@ public class DayNIght : MonoBehaviour
                 angle-=90;
                 rotated2 = true;
                 day=true;
+                GameObject.Find("Player").GetComponent<HEalth>().health=100;
             }
         }
         DayNightIndicator.rotation = Quaternion.Lerp(DayNightIndicator.rotation, Quaternion.Euler(0, 0, angle), Time.deltaTime*10);

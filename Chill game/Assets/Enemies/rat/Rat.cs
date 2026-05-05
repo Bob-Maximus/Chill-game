@@ -16,11 +16,14 @@ public class Rat : MonoBehaviour
     public float startingHealth;
 
     public float score;
+    public AudioClip sound;
+    public AudioClip peckSound;
 
     public GameObject biteObject;
 
     void Awake()
     {
+        GetComponent<AudioSource>().PlayOneShot(sound);
         rb  = GetComponent<Rigidbody>();
         target = GameObject.Find("Player").transform;
 
@@ -38,6 +41,11 @@ public class Rat : MonoBehaviour
             FollowPlayer();
         }
         transform.position = new Vector3(transform.position.x, height, transform.position.z);
+
+        if (Random.Range(0, 50000)==69){}
+        {
+            //GetComponent<AudioSource>().PlayOneShot(sound);
+        }
     } 
 
     void FollowPlayer()
@@ -67,6 +75,7 @@ public class Rat : MonoBehaviour
             for(int i = 0; i < peckTargets.Length; i++) {
                 if (peckTargets[i].gameObject.tag == "Player")
                 {
+                    GetComponent<AudioSource>().PlayOneShot(peckSound);
                     peckTargets[i].transform.parent.GetComponent<HEalth>().health -= damage;
                 }
             }

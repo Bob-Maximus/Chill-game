@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
     public DayNIght time;
     public float score;
 
+    public TextMeshProUGUI deathScore;
 
     public float letterSpacing;
 
@@ -18,6 +19,12 @@ public class Score : MonoBehaviour
     void Update()
     {
         PrettyText();
+
+        if (GameObject.Find("Player").GetComponent<HEalth>().health < 1)
+        {
+            int displayScore = (int)Mathf.Lerp(int.Parse(deathScore.text), score, Time.unscaledDeltaTime*0.5f);
+            deathScore.text = displayScore.ToString();
+        }
     }
 
     private void PrettyText()

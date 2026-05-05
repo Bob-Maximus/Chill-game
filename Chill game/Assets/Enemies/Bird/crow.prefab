@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4861944939095352565}
   - component: {fileID: 9016531758546114294}
   - component: {fileID: 3118446073857434822}
+  - component: {fileID: -9029821174714218431}
   m_Layer: 0
   m_Name: crow
   m_TagString: Untagged
@@ -54,6 +55,8 @@ MonoBehaviour:
   attackRange: 1
   damage: 20
   startingHealth: 75
+  sound: {fileID: 8300000, guid: ce8bfc3167eaffacd844077616d489a2, type: 3}
+  biteSound: {fileID: 8300000, guid: 6089ef441f2054378b474f692c0dfee7, type: 3}
   score: 0
   peckObject: {fileID: 7991909620005122766}
 --- !u!54 &9016531758546114294
@@ -97,6 +100,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreAddition: 100
   scoreMultiplier: 1.3
+--- !u!82 &-9029821174714218431
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3543553874352052769}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7991909620005122766
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b8f40e15470beff6bd650c3769ad7cd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9809552
+      value: 0.9812927
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b8f40e15470beff6bd650c3769ad7cd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -162,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b8f40e15470beff6bd650c3769ad7cd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.1942344
+      value: -0.19252197
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b8f40e15470beff6bd650c3769ad7cd, type: 3}
       propertyPath: m_LocalRotation.z
@@ -174,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b8f40e15470beff6bd650c3769ad7cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -22.4
+      value: -22.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1b8f40e15470beff6bd650c3769ad7cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -892,6 +992,10 @@ MonoBehaviour:
   health: 50
   score: 0
   deathEffect: {fileID: 984478677018308250, guid: ecd92a91ea44c6815917377d117bb649, type: 3}
+  deathScreen: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 38e550bb10fdf5c948ae35fc203d6341, type: 3}
+  slider: {fileID: 0}
+  player: 0
 --- !u!1 &8326139310852129895 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1131774471668849816, guid: 1b8f40e15470beff6bd650c3769ad7cd, type: 3}
